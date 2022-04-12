@@ -35,7 +35,7 @@ def teknologi():
     response = Code.teknologi()
     return res.success(response)
 
-@app.route('/hiburan')
+@app.route('/hiburan.json')
 def hiburan():
     response = Code.hiburan()
     return res.success(response)

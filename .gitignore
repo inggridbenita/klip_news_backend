@@ -4,3 +4,5 @@ src/__pycache__/code.cpython-310.pyc
 src/__pycache__/res.cpython-310.pyc
 /.idea
 /venv
+/res
+/__pycache__

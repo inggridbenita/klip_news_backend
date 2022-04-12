@@ -46,7 +46,7 @@ class Script:
         return self.query('{}/teknologi'.format(base_url))
 
     def hiburan(self):
-        return self.query('{}/hiburan'.format(base_url))
+        return self.query('{}/hiburan.json'.format(base_url))
 
     def social(self):
         return self.query('{}/gaya-hidup'.format(base_url))
