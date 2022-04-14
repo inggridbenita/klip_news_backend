@@ -55,6 +55,7 @@ indices = pd.Series(df['Title'])
 
 
 def recommend(title, cs=cosine_sim):
+    # Fungsi untuk merekomendasikan film
     recommended_movies = []
     idx = indices[indices == title].index[0]
     score_series = pd.Series(cs[idx]).sort_values(ascending=False)
