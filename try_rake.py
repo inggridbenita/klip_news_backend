@@ -6,7 +6,7 @@ import matplotlib
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import CountVectorizer
 
-df = pd.read_csv('./res/datasets/dataset_custom.csv')
+df = pd.read_csv('./res/datasets/news.csv')
 
 df['Key_words'] = ''
 r = Rake()
