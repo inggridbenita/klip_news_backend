@@ -10,6 +10,5 @@ class DateTime:
     def convert_string_to_datetime(self, datetime_string, datetime_format):
         pass
 
-    @staticmethod
-    def convert_date_string_to_desired_format(datetime_string, datetime_format):
+    def convert_date_string_to_desired_format(self, datetime_string, datetime_format):
         pass
