@@ -15,5 +15,6 @@ def get_news_detail():
     news_id = request.args.get('id')
     return h.get_news_detail_handler(news_id)
 
+
 if __name__ == "__main__":
     app.run(debug=True)
