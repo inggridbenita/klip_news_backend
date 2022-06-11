@@ -5,10 +5,6 @@ class News:
     def get_news(self):
         pass
 
-    @staticmethod
-    def get_news_detail(news_id):
-        pass
-
 
 class DateTime:
     def convert_string_to_datetime(self, datetime_string, datetime_format):
