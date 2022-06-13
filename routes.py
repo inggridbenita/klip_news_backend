@@ -1,17 +1,15 @@
-from flask import Flask, request
-from flask_cors import CORS
+from flask import Flask, request, Blueprint
 import handler as h
 
-app = Flask(__name__)
-CORS(app)
+routes = Blueprint('routes', __name__)
 
 
-@app.route('/get_all_news')
+@routes.route('/get_all_news')
 def get_all_news():
     return h.get_all_news_handler()
 
 
-@app.route('/get_news_detail')
+@routes.route('/get_news_detail')
 def get_news_detail():
     news_id = request.args.get('id')
     return h.get_news_detail_handler(news_id)
