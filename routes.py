@@ -1,6 +1,9 @@
-from __main__ import app
-from __main__ import request
-from __main__ import h
+from flask import Flask, request
+from flask_cors import CORS
+import handler as h
+
+app = Flask(__name__)
+CORS(app)
 
 
 @app.route('/get_all_news')
