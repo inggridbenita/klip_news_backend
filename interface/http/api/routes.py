@@ -1,5 +1,5 @@
-from flask import Flask, request, Blueprint
-import handler as h
+from flask import request, Blueprint
+from interface.http.api import handler as h
 
 routes = Blueprint('routes', __name__)
 
