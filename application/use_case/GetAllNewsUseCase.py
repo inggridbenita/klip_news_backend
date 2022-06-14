@@ -1,11 +1,11 @@
 class GetAllNewsUseCase:
-    def __init__(self, news_repository, datetime_repository):
-        self._newsRepository = news_repository
+    def __init__(self, news_repository_dataset, datetime_repository):
+        self._newsRepositoryDataset = news_repository_dataset
         self._DateTimeRepository = datetime_repository
 
     def execute(self):
         datetime_format = "%Y-%m-%d %H:%M:%S"
-        news_preprocessed = self._newsRepository.get_news_preprocessed()
+        news_preprocessed = self._newsRepositoryDataset.get_news_preprocessed()
         list_news = []
         for i in range(0, len(news_preprocessed)):
             list_news.append({
@@ -23,24 +23,3 @@ class GetAllNewsUseCase:
             list_news[i]["date"] = self._DateTimeRepository\
                 .convert_date_string_to_desired_format(list_news[i]["date"], datetime_format)
         return {"news": list_news}
-
-
-class GetNewsDetailUseCase:
-    def __init__(self, news_repository):
-        self._newsRepository = news_repository
-
-    def execute(self, news_id):
-        news_id = int(news_id)
-        df = self._newsRepository.get_news()
-        df = df[df["id"] == news_id]
-        news = df.iloc[0]
-        news_dict = {
-            "id": str(news['id']),
-            "title": news['title'],
-            "date": news['date'],
-            "weekday": news["weekday"],
-            "poster": news['poster'],
-            "category": news['category'],
-            "content": news['content'],
-        }
-        return news_dict
