@@ -17,5 +17,5 @@ class GetArrNewsDetailUseCase:
                 "category": news_item['category'],
                 "content": news_item['content'],
             }
-            news.append((news_dict))
+            news.append(news_dict)
         return {"news": news}
