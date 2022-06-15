@@ -13,3 +13,9 @@ def get_all_news():
 def get_news_detail():
     news_id = request.args.get('id')
     return h.get_news_detail_handler(news_id)
+
+
+@routes.route('/get_arr_news_detail', methods=['POST', 'GET'])
+def get_arr_news_detail():
+    body = request.json
+    return h.get_arr_news_detail_handler(body)
