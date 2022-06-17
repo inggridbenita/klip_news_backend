@@ -25,3 +25,9 @@ def get_arr_news_detail():
 def get_news_by_category():
     args = request.args
     return h.get_news_by_category_handler(args.get("category", default="", type=str))
+
+
+@routes.route('/get_recommendation', methods=['POST', 'GET'])
+def get_recommendation():
+    body = request.json
+    return h.get_recommendation_handler(body)

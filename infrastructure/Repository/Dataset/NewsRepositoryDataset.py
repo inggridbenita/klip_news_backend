@@ -8,3 +8,6 @@ class NewsRepositoryDataset(NewsRepository):
 
     def get_news(self):
         return pd.read_csv("./res/datasets/news.csv")
+
+    def get_stopwords(self):
+        return pd.read_csv("./res/stop_words.csv")
