@@ -9,13 +9,17 @@ class RakeRepositoryLibrary(RakeRepository):
     @staticmethod
     def recommend(df, title, cs, indices):
         # Fungsi untuk merekomendasikan film
-        recommended_news = []
+        recommended_news_id = []
+        recommended_news_score = []
         idx = indices[indices == title].index[0]
         score_series = pd.Series(cs[idx]).sort_values(ascending=False)
-        top_10_indices = list(score_series.iloc[1:11].index)
+        top_10_indices = list(score_series.iloc[0:10].index)
+        j = 0
         for i in top_10_indices:
-            recommended_news.append(list(df['id'])[i])
-        return recommended_news
+            recommended_news_id.append(list(df['id'])[i])
+            recommended_news_score.append(score_series[j])
+            j = j + 1
+        return recommended_news_id, recommended_news_score
 
     @staticmethod
     def rake_implement(x, r):
@@ -38,7 +42,16 @@ class RakeRepositoryLibrary(RakeRepository):
         cosine_sim = cosine_similarity(count_matrix, count_matrix)
         indices = pd.Series(df_news['id'])
 
-        recommended_news = []
+        list_id = []
+        list_score = []
         for i in range(0, len(news_id_arr)):
-            recommended_news = recommended_news + self.recommend(df_news, news_id_arr[i], cosine_sim, indices)
-        return list(set(recommended_news))
+            temp_list_id, temp_list_score = self.recommend(df_news, news_id_arr[i], cosine_sim, indices)
+            list_id.extend(temp_list_id)
+            list_score.extend(temp_list_score)
+        df_recommendation = pd.DataFrame({
+            "id": list_id,
+            "score": list_score,
+        })
+        df_recommendation = df_recommendation.sort_values(by='score', ascending=False)
+        df_recommendation = df_recommendation.drop_duplicates(subset=['id'], keep='first')
+        return list(df_recommendation["id"])
