@@ -13,7 +13,7 @@ class RakeRepositoryLibrary(RakeRepository):
         recommended_news_score = []
         idx = indices[indices == title].index[0]
         score_series = pd.Series(cs[idx]).sort_values(ascending=False)
-        top_10_indices = list(score_series.iloc[0:10].index)
+        top_10_indices = list(score_series.iloc[1:11].index)
         j = 0
         for i in top_10_indices:
             recommended_news_id.append(list(df['id'])[i])
