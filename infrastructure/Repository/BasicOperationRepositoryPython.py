@@ -1,7 +1,8 @@
+from domains.BasicOperationRepository import BasicOperationRepository
 import datetime
 
 
-class BasicOperation:
+class BasicOperationRepositoryPython(BasicOperationRepository):
     @staticmethod
     def convert_integer_to_string(integer):
         return str(integer)
