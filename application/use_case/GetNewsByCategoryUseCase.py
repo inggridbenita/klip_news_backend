@@ -10,7 +10,7 @@ class GetNewsByCategoryUseCase:
 
     def execute(self, category):
         datetime_format = "%Y-%m-%d %H:%M:%S"
-        news_preprocessed = self._newsRepositoryDataset.get_news_preprocessed()
+        news_preprocessed = self._newsRepositoryDataset.get_news()
 
         # Filter dataset by selected category
         news_preprocessed = self._DataFrameRepositoryLibrary\

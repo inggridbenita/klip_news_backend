@@ -11,7 +11,7 @@ class GetAllNewsUseCase:
 
     def execute(self):
         datetime_format = "%Y-%m-%d %H:%M:%S"
-        news_preprocessed = self._newsRepositoryDataset.get_news_preprocessed()  # get news preprocessed dataframe
+        news_preprocessed = self._newsRepositoryDataset.get_news()  # get news preprocessed dataframe
 
         # Get dataframe column name
         column_names = self._DataFrameRepositoryLibrary.get_array_of_column_names(news_preprocessed)
