@@ -5,6 +5,7 @@ class GetNewsDetailUseCase:
         self._basicOperation = basic_operation
 
     def execute(self, news_id):
+        self._validate_id(news_id)
         news_id = self._basicOperation.convert_string_to_integer(news_id)  # Convert news id to integer
         df = self._newsRepositoryDataset.get_news()  # get news dataset
         column_names = self._dataFrameRepositoryLibrary.get_array_of_column_names(df)  # get dataframe column names
@@ -21,3 +22,11 @@ class GetNewsDetailUseCase:
         news_dict = self._basicOperation.convert_data_frame_row_to_mapping_format(news_item, column_names)
 
         return news_dict
+
+    @staticmethod
+    def _validate_id(id):
+        if isinstance(id, type(None)):
+            raise Exception('GET_NEWS_DETAIL_USE_CASE.NOT_CONTAIN_NEEDED_PROPERTY')
+
+        if isinstance(id, str):
+            raise Exception('GET_NEWS_DETAIL_USE_CASE.NOT_MEET_DATA_TYPE_SPECIFICATION')
