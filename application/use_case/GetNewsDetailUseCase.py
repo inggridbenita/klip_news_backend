@@ -28,5 +28,5 @@ class GetNewsDetailUseCase:
         if isinstance(id, type(None)):
             raise Exception('GET_NEWS_DETAIL_USE_CASE.NOT_CONTAIN_NEEDED_PROPERTY')
 
-        if isinstance(id, str):
+        if not isinstance(id, str):
             raise Exception('GET_NEWS_DETAIL_USE_CASE.NOT_MEET_DATA_TYPE_SPECIFICATION')
